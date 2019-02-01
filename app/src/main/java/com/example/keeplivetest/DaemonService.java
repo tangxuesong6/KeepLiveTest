@@ -39,6 +39,8 @@ public class DaemonService extends Service {
                 builder.setContentText("DaemonService is runing...");
                 builder.setChannelId("channelId");
                 startForeground(NOTICE_ID, builder.build());
+                Intent intent = new Intent(this, CancelNoticeService.class);
+                startService(intent);
             } else {
                 Notification.Builder builder = new Notification.Builder(this);
                 builder.setSmallIcon(R.mipmap.ic_launcher);

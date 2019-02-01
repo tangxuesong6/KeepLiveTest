@@ -79,3 +79,4 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+将删除 app/libs/
