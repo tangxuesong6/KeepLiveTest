@@ -51,6 +51,8 @@ public class PlayerMusicService extends Service {
         Intent intent = new Intent(getApplicationContext(), PlayerMusicService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(intent);
+        }else {
+            startService(intent);
         }
     }
 }
