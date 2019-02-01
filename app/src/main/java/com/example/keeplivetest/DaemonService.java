@@ -91,6 +91,7 @@ public class DaemonService extends Service {
             NotificationManager mManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             mManager.cancel(NOTICE_ID);
         }
+        mScreenReceiverUtil.stopScreenReceiverListener();
         Log.d(TAG, "DaemonService---->onDestroy，前台service被杀死");
         // 重启自己
         Intent intent = new Intent(getApplicationContext(), DaemonService.class);
