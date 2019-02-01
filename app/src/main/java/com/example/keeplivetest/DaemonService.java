@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class DaemonService extends Service {
     private static final String TAG = "DaemonService";
     public static final int NOTICE_ID = 100;
+    private ScreenReceiverUtil mScreenReceiverUtil;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -56,6 +57,23 @@ public class DaemonService extends Service {
         } else {
             startForeground(NOTICE_ID, new Notification());
         }
+        mScreenReceiverUtil = new ScreenReceiverUtil(this);
+        mScreenReceiverUtil.setScreenReceiverListener(new ScreenReceiverUtil.SreenStateListener() {
+            @Override
+            public void onSreenOn() {
+                stopPlayMusicService();
+            }
+
+            @Override
+            public void onSreenOff() {
+                startMusic();
+            }
+
+            @Override
+            public void onUserPresent() {
+
+            }
+        });
     }
 
     @Override
@@ -78,4 +96,15 @@ public class DaemonService extends Service {
         Intent intent = new Intent(getApplicationContext(), DaemonService.class);
         startService(intent);
     }
+
+    private void startMusic() {
+        Intent intent = new Intent(this, PlayerMusicService.class);
+        startService(intent);
+    }
+
+    private void stopPlayMusicService() {
+        Intent intent = new Intent(this, PlayerMusicService.class);
+        stopService(intent);
+    }
+
 }

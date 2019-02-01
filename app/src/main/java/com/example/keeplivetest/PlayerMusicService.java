@@ -10,8 +10,6 @@ import android.util.Log;
 
 public class PlayerMusicService extends Service {
     private final static String TAG = "PlayerMusicService";
-    private MediaPlayer mMediaPlayer;
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -22,8 +20,7 @@ public class PlayerMusicService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, TAG + "---->onCreate,启动服务");
-        mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.twefight);
-        mMediaPlayer.setLooping(true);
+        MediaPlayerManager.getInstance(this.getApplicationContext()).init();
     }
 
     @Override
@@ -38,17 +35,11 @@ public class PlayerMusicService extends Service {
     }
 
     private void startPlayMusic() {
-        if (mMediaPlayer != null) {
-            Log.d(TAG, "启动后台播放音乐");
-            mMediaPlayer.start();
-        }
+        MediaPlayerManager.getInstance(this.getApplicationContext()).startMusic();
     }
 
     private void stopPlayMusic() {
-        if (mMediaPlayer != null) {
-            Log.d(TAG, "关闭后台播放音乐");
-            mMediaPlayer.stop();
-        }
+        MediaPlayerManager.getInstance(this.getApplicationContext()).stopMusic();
     }
 
     @Override

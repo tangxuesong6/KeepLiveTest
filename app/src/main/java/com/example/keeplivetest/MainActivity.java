@@ -11,8 +11,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mCloseMusic;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMusic(View view) {
         startDeamon();
-      startMusic();
-
     }
 
     private void startMusic() {
