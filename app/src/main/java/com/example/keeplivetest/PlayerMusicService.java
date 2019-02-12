@@ -48,11 +48,11 @@ public class PlayerMusicService extends Service {
         stopPlayMusic();
         Log.d(TAG, TAG + "---->onCreate,停止服务");
         // 重启自己
-        Intent intent = new Intent(getApplicationContext(), PlayerMusicService.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(intent);
-        }else {
-            startService(intent);
-        }
+//        Intent intent = new Intent(getApplicationContext(), PlayerMusicService.class);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            startForegroundService(intent);
+//        }else {
+//            startService(intent);
+//        }
     }
 }

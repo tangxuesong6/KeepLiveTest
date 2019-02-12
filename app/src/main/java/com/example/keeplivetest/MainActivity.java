@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMusic(View view) {
         startDeamon();
+//        startMusic();
     }
 
     private void startMusic() {
